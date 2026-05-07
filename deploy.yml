@@ -1,0 +1,15 @@
+---
+- name: Deploy Maven Artifact
+  hosts: localhost
+  become: yes
+
+  tasks:
+    - name: Create directory
+      file:
+        path: /home/user/deployment
+        state: directory
+
+    - name: Copy JAR file
+      copy:
+        src: target/HelloMaven-1.0-SNAPSHOT.jar
+        dest: /home/user/deployment/HelloMaven.jar
